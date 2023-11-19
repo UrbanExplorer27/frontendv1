@@ -24,7 +24,7 @@ const Chatbot = () => {
     setIsChat(true);
     axios
       .post(
-        `${process.env.REACT_APP_SERVER_URL}/query`,
+        `${process.env.REACT_APP_SERVER_URL}/api/query`,
         { query: question },
         {
           headers: {
