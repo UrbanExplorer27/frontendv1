@@ -22,16 +22,16 @@ const Chatbot = () => {
 
   const botReply = (question) => {
     setIsChat(true);
-    axios
-      .post(
-        `${process.env.REACT_APP_SERVER_URL}/query`,
-        { query: question },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+    axios.post(
+      `${process.env.REACT_APP_SERVER_URL}/query`,
+      { query: question },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+      }
+    )
       .then((response) => {
         console.log(response);
         setIsLoading(false);
