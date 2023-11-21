@@ -22,16 +22,16 @@ const Chatbot = () => {
 
   const botReply = (question) => {
     setIsChat(true);
-    axios.post(
-      `${process.env.REACT_APP_SERVER_URL}/api/query`,
-      { query: question },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
-        },
-      }
-    )
+    axios
+      .post(
+        `${process.env.REACT_APP_SERVER_URL}/query`,
+        { query: question },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((response) => {
         console.log(response);
         setIsLoading(false);
@@ -76,66 +76,16 @@ const Chatbot = () => {
           {messages.length === 0 ? (
             <div className="rounded-lg border bg-background p-8">
               <h1 className="mb-2 text-lg font-semibold">
-                Welcome to the Sales Chatbot!
+                Welcome to the Sales Chatbot! 
               </h1>
+
               <p className="mb-2 leading-normal text-muted-foreground">
-                The ultimate sales assistant .
-              </p>
-              <p className="leading-normal text-muted-foreground">
-                To find someones email, make sure to ask in this exact format "find the email for xyz". You can also try one of the following examples:
+                To start, ask the bot to find the email of the person you're trying to contact. Like this "Find the email for John Smith"
               </p>
               <div className="mt-4 flex flex-col items-start space-y-2">
-                <button
-                  className="inline-flex items-center justify-center rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary underline-offset-4 shadow-none hover:underline h-auto p-0 text-base"
-                  onClick={() => {
-                    setValue("Find an email");
-                    send("Find an email");
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 256 256"
-                    fill="currentColor"
-                    className="h-4 w-4 mr-2 text-muted-foreground"
-                  >
-                    <path d="m221.66 133.66-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z"></path>
-                  </svg>
-                  Find an email
-                </button>
-                <button
-                  className="inline-flex items-center justify-center rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary underline-offset-4 shadow-none hover:underline h-auto p-0 text-base"
-                  onClick={() => {
-                    setValue("Write a sales email");
-                    send("Write a sales email");
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 256 256"
-                    fill="currentColor"
-                    className="h-4 w-4 mr-2 text-muted-foreground"
-                  >
-                    <path d="m221.66 133.66-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z"></path>
-                  </svg>
-                  Write a sales email
-                </button>
-                <button
-                  className="inline-flex items-center justify-center rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary underline-offset-4 shadow-none hover:underline h-auto p-0 text-base"
-                  onClick={() => {
-                    setValue("What's the best way to create a sales campaign");
-                    send("What's the best way to create a sales campaign");
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 256 256"
-                    fill="currentColor"
-                    className="h-4 w-4 mr-2 text-muted-foreground"
-                  >
-                    <path d="m221.66 133.66-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z"></path>
-                  </svg>
-                  What's the best way to create a sales campaign
-                </button>
+
+          
+          
               </div>
             </div>
           ) : (
