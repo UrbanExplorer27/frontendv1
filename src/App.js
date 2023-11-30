@@ -9,7 +9,6 @@ function App() {
   return (
     <Router>
       <div className="app h-screen flex flex-col">
-        {/* <Header /> */}
         <div className="flex-grow">
           <AppRoutes />
         </div>
